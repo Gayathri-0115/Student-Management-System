@@ -1,10 +1,10 @@
 import React from 'react'
 import Add from '../Components/Add'
 
-const AddDetails = () => {
+const AddDetails = ({ addStudent }) => {
   return (
     <div>
-        <Add/>
+        <Add onAdd={addStudent}/>
     </div>
   )
 }

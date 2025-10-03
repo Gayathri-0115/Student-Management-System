@@ -1,10 +1,10 @@
 import React from 'react'
 import StudentTable from '../Components/StudentTable'
 
-const Display = () => {
+const Display = ({ students }) => {
   return (
     <div>
-        <StudentTable/>
+        <StudentTable students={students}/>
     </div>
   )
 }

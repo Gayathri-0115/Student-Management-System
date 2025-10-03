@@ -1,10 +1,12 @@
 import React from 'react'
 import EditDelete from '../Components/EditDelete'
 
-const EditDel = () => {
+const EditDel = ({ students, deleteStudent, updateStudent }) => {
   return (
     <div>
-        <EditDelete/>
+        <EditDelete  students={students}
+        onDelete={deleteStudent}
+        onUpdate={updateStudent}/>
     </div>
   )
 }
