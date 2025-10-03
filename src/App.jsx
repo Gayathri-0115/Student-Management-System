@@ -12,13 +12,13 @@ function App() {
 
   // Fetch all students from backend
   useEffect(() => {
-    fetch("http://localhost:3000/students")
+    fetch(import.meta.env.VITE_API_URL+"students")
       .then((res) => res.json())
       .then((data) => setStudents(data));
   }, []);
 
   const addStudent = async (studentData) => {
-    const res = await fetch("http://localhost:3000/students", {
+    const res = await fetch(import.meta.env.VITE_API_URL+"students", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(studentData),
@@ -29,13 +29,13 @@ function App() {
 
   // Delete student
   const deleteStudent = async (id) => {
-    await fetch(`http://localhost:3000/students/${id}`, { method: "DELETE" });
+    await fetch(`${import.meta.env.VITE_API_URL}students/${id}`, { method: "DELETE" });
     setStudents(students.filter((s) => s._id !== id));
   };
 
   // Update student
   const updateStudent = async (id, updatedData) => {
-    const res = await fetch(`http://localhost:3000/students/${id}`, {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}students/${id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(updatedData),
