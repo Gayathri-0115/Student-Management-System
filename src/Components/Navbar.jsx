@@ -51,7 +51,7 @@ const Navbar = () => {
 
       {/* Mobile Dropdown */}
       {isOpen && (
-        <div className="md:hidden bg-purple-600 backdrop-blur-lg">
+        <div className="md:hidden bg-purple-400 backdrop-blur-lg">
           <ul className="flex flex-col gap-4 p-4 text-white text-lg font-semibold">
             <Link to="/" onClick={() => setIsOpen(false)} >
             <li className="px-4 py-2 hover:bg-purple-500 rounded-md">Home</li>

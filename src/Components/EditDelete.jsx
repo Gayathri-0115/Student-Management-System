@@ -54,31 +54,56 @@ const EditDelete = ({ students, onDelete, onUpdate }) => {
       </table>
        {/* Edit Modal */}
       {editingStudent && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-1/2">
-            <h2 className="text-xl font-bold mb-4">Edit Student</h2>
-            <div className="grid grid-cols-2 gap-4">
-              {Object.keys(editForm).map((field) =>
-                field !== "_id" ? (
-                  <input
-                    key={field}
-                    type="text"
-                    name={field}
-                    value={editForm[field] || ""}
-                    onChange={handleChange}
-                    className="border p-2"
-                    placeholder={field}
-                  />
-                ) : null
-              )}
-            </div>
-            <div className="flex justify-end mt-4 space-x-2">
-              <button onClick={() => setEditingStudent(null)} className="bg-gray-400 text-white px-4 py-2 rounded">Cancel</button>
-              <button onClick={handleUpdate} className="bg-blue-500 text-white px-4 py-2 rounded">Save</button>
-            </div>
-          </div>
-        </div>
-      )}
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+    <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6">
+      <h2 className="text-2xl font-bold mb-6 text-center sm:text-left">Edit Student</h2>
+
+      <form className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {Object.keys(editForm).map(
+          (field) =>
+            !["_id", "__v", "_v"].includes(field) && (
+              <div key={field} className="flex flex-col">
+                <label
+                  htmlFor={field}
+                  className="text-sm font-semibold text-gray-700 mb-1 capitalize"
+                >
+                  {field.replace(/([A-Z])/g, " $1")}
+                </label>
+                <input
+                  id={field}
+                  type="text"
+                  name={field}
+                  value={editForm[field] || ""}
+                  onChange={handleChange}
+                  className="border border-gray-300 rounded-lg p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+                  placeholder={`Enter ${field.replace(/([A-Z])/g, " $1")}`}
+                />
+              </div>
+            )
+        )}
+      </form>
+
+      <div className="flex flex-col sm:flex-row justify-end mt-6 gap-3 sticky bottom-0 bg-white py-2">
+        <button
+          onClick={() => setEditingStudent(null)}
+          className="bg-gray-400 hover:bg-gray-500 text-white px-4 py-2 rounded-lg transition-all duration-200 cursor-pointer"
+        >
+          Cancel
+        </button>
+        <button
+          onClick={handleUpdate}
+          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-all duration-200 cursor-pointer"
+        >
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+  
+ 
+           
 
     </div>
   )
